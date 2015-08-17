@@ -2,10 +2,12 @@
 class Task
 {
     private $description;
+    private $id;
 
-    function __construct($description)
+    function __construct($description, $id = null)
     {
         $this->description = $description;
+        $this->id = $id;
     }
 
     function setDescription ($new_description)
@@ -18,9 +20,15 @@ class Task
         return $this->description;
     }
 
+    function getId()
+    {
+        return $this->id;
+    }
+
     function save()
     {
         $GLOBALS['DB']->exec("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}');");
+        $this->id = $GLOBALS['DB']->lastInsertId(); 
     }
 
     static function getAll()
