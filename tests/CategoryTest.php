@@ -12,7 +12,7 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class CategoryTest extends PHPUnit_Framwork_TestCase
+    class CategoryTest extends PHPUnit_Framework_TestCase
     {
 
         protected function tearDown()
